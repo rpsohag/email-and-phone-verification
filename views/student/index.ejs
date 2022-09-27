@@ -1,0 +1,37 @@
+
+
+<div class="container my-5 student-table mx-auto">
+    <div class="row justify-content-center">
+        <div class="col-md-8 mx-5">
+            <a class="btn btn-sm btn-primary" href="/student/create">Add Students</a>
+            <a class="btn btn-sm btn-danger" href="/student/unverified">Unverified Students</a>
+            <br>
+            <br>
+            
+        </div>
+
+        <% getStudent.reverse().forEach(( data, index ) => { %>
+            <div class="col-md-3 mb-3">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <div class="user-info">
+                            <% if (data.photo == 'avatar.jpg') { %>
+                                <img src="/images/<%= data.photo %> " alt="">
+                            <% } else { %>
+                                <img src="/images/students/<%= data.photo %> " alt="">
+                            <% } %>
+                            <h4><%= data.name %></h4>
+                            <p><%= data.cell %></p>
+                            <hr>
+                            <a class="btn btn-sm btn-info" href="/student/<%= data.id %> "><i class="fas fa-eye"></i></a>
+                            <a class="btn btn-sm btn-warning" href="/student/edit/<%= data.id %>"><i class="fas fa-edit"></i></a>
+                            <a class="btn btn-sm btn-danger delete-btn" href="/student/delete/<%= data.id %> "><i class="fas fa-trash"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+
+
+    </div>
+</div>
